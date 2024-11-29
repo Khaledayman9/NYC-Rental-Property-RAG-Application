@@ -52,6 +52,7 @@ myenv\Scripts\activate
 
 # Usage:
 **- Open a web browser and navigate to http://127.0.0.1:5000/.**
+
 **- Ask questions related to NYC rental properties in the input field.**
 
 ## 4. Install dependencies:
