@@ -50,10 +50,6 @@ python -m venv myenv
 myenv\Scripts\activate
 ```
 
-# Usage:
-**- Open a web browser and navigate to http://127.0.0.1:5000/.**
-
-**- Ask questions related to NYC rental properties in the input field.**
 
 ## 4. Install dependencies:
 ```bash
@@ -64,6 +60,13 @@ pip install -r requirements.txt
 ```bash
 python app.py
 ```
+
+
+
+# Usage:
+**- Open a web browser and navigate to http://127.0.0.1:5000/.**
+
+**- Ask questions related to NYC rental properties in the input field.**
 
 # Technologies
 - **Backend**: Flask
