@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+}
+
+.ask-container {
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 80%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #ccc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+button:enabled {
+    background-color: #28a745;
+    cursor: pointer;
+    opacity: 1;
+}
+
+button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.container2 {
+    width: 80%;
+    max-width: 800px;
+    margin-top: 20px;
+}
+
+#chat-history {
+    max-height: 400px;
+    overflow-y: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 0 auto;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.response-box {
+    width: 100%;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin: 10px 0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.question {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.answer {
+    font-family: 'Inter', sans-serif;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+#loading img,
+#gifgenerating img {
+    width: 40px;
+    height: auto;
+}

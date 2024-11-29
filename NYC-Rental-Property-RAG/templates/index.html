@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYC Rental Property Query</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="ask-container">
+            <h1>Ask about NYC Rental Properties</h1>
+            <textarea id="query" placeholder="Ask a question..." oninput="toggleButton()"></textarea>
+            <button id="askButton" onclick="askQuestion()" disabled>Ask</button>
+        </div>
+
+        <div id="loading" style="display:none;">
+            <img src="{{ url_for('static', filename='wait.gif') }}" alt="Loading...">
+        </div>
+
+        <div id="gifgenerating" style="display:none;">
+            <img src="{{ url_for('static', filename='generating.gif') }}" alt="Generating...">
+        </div>
+
+        
+    </div>
+    <div class="container2">
+        <div id="chat-history" class="chat-history"></div>
+    </div> 
+    <script>
+        let isGeneratingAnswer = false;
+        let qaCounter = 0;
+    
+        function toggleButton() {
+            let query = document.getElementById("query").value;
+            let askButton = document.getElementById("askButton");
+            if (query.trim() === "" || isGeneratingAnswer) {
+                askButton.disabled = true;
+            } else {
+                askButton.disabled = false;
+            }
+        }
+    
+        async function askQuestion() {
+            let query = document.getElementById("query").value;
+            if (!query) return;
+            qaCounter++;
+            const responseDiv = document.createElement('div');
+            responseDiv.classList.add('response-box');
+            const questionDiv = document.createElement('div');
+            questionDiv.classList.add('question');
+            questionDiv.textContent = `${qaCounter}. Q: ${query}`;
+            responseDiv.appendChild(questionDiv);
+            document.getElementById("loading").style.display = "block";
+            isGeneratingAnswer = true; 
+            toggleButton();
+    
+            try {
+                const response = await fetch("/ask", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ query: query }),
+                });
+    
+                const result = await response.json();
+                let answer = result.response || "Sorry, something went wrong!";
+                const answerStart = answer.indexOf("Answer: ") + "Answer: ".length;
+                if (answerStart > "Answer: ".length - 1) {
+                    answer = answer.slice(answerStart).trim();
+                } else {
+                    answer = "Could not parse the answer correctly.";
+                }
+
+                const answerDiv = document.createElement('div');
+                answerDiv.classList.add('answer');
+                answerDiv.innerHTML = `${qaCounter}. A: `;
+    
+                const words = answer.split(/(\s+|\n)/); 
+                let wordCount = 0;
+                let startingG = false;
+    
+                function showWord() {
+                    if (wordCount < words.length) {
+                        if(!startingG){
+                            document.getElementById("query").value = '';
+                            startingG = true;
+                        }
+                        const nextWord = words[wordCount++];
+                        if (nextWord === '\n') {
+                            answerDiv.innerHTML += '<br>';
+                        } else {
+                            answerDiv.innerHTML += nextWord;
+                        }
+                        setTimeout(showWord, 70); 
+                        document.getElementById("loading").style.display = "none"; 
+                        document.getElementById("gifgenerating").style.display = "block"; 
+                    } else {
+                        startingG = false;
+                        isGeneratingAnswer = false;
+                        toggleButton(); 
+                        document.getElementById("gifgenerating").style.display = "none"; 
+                    }
+                }
+    
+                showWord();
+                responseDiv.appendChild(answerDiv);
+                document.getElementById("chat-history").insertBefore(responseDiv, document.getElementById("chat-history").firstChild);
+            } catch (error) {
+                console.error("Error:", error);
+                alert("An error occurred. Please try again.");
+            }
+        }
+    
+        window.onload = function () {
+            toggleButton();
+        };
+    </script>
+    
+    
+</body>
+</html>

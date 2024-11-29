@@ -1,0 +1,7 @@
+flask
+transformers==4.30.0
+faiss-cpu==1.7.4
+torch==1.13.0
+pandas==1.5.3 
+numpy==1.23.5
+flask-cors
