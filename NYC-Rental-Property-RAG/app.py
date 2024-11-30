@@ -5,6 +5,7 @@ import os
 from flask_cors import CORS
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"  # Disable GPU (CUDA)
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
 # app = Flask(__name__)
 
