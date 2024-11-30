@@ -68,11 +68,11 @@ The model combines machine learning techniques for embedding generation, similar
 - Takes a query and relevant context as input and generates a response.
 
 ## 5. Key Functions:
-*get_embeddings*: Generates embeddings for a list of texts.
-*get_relevant_context*: Retrieves the most relevant contexts from the dataset based on similarity to the query.
-*generate_response*: Generates a natural language answer using the query and relevant context.
-*limit_response_length*: Ensures the generated response does not exceed a specified length.
-*answer_query*: Combines the above steps to retrieve context and generate a coherent answer.
+- *get_embeddings*: Generates embeddings for a list of texts.
+- *get_relevant_context*: Retrieves the most relevant contexts from the dataset based on similarity to the query.
+- *generate_response*: Generates a natural language answer using the query and relevant context.
+- *limit_response_length*: Ensures the generated response does not exceed a specified length.
+- *answer_query*: Combines the above steps to retrieve context and generate a coherent answer.
 
 
 # Routes
