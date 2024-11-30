@@ -17,6 +17,7 @@ def get_embeddings(texts):
         embeddings = model(**inputs).last_hidden_state.mean(dim=1) 
     return embeddings
 
+# embeddings = get_embeddings(df_cleaned['neighbourhood'].tolist()) # embeddings for all neighborhoods in the dataset
 embeddings = get_embeddings(df_cleaned['neighbourhood'].head(10).tolist())
 embeddings_np = embeddings.numpy()
 
