@@ -77,12 +77,12 @@ The model combines machine learning techniques for embedding generation, similar
 
 # Routes
 The *app.py* file sets up the web application using Flask. It defines the routes that handle requests and responses.
-## /
+## 1. `/`
 - Type: GET
 - Purpose: Serves the main page of the app by rendering index.html.
 - When the user accesses the root URL (/), the browser displays the user interface, which is defined in the index.html template.
 
-## /ask
+## 2. `/ask`
 - Type: POST
 - Purpose: Handles queries from the user and returns the generated answer.
 - The front-end sends a JSON object containing the user's query to this route.
