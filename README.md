@@ -1,6 +1,8 @@
 # NYC-Rental-Property-RAG-Application
 A Flask-based web application that utilizes a Retrieval-Augmented Generation (RAG) pipeline to provide an interactive Q&amp;A interface for exploring rental property data in New York City. This aims to answer user queries based on a dataset of NYC rental properties.
 
+![](https://github.com/Khaledayman9/Handwritten-Digit-Recognizer/blob/main/Demo.gif)
+
 # Aim
 The aim of this app is to provide an interactive platform that allows users to explore and analyze rental property data from New York City. Using a Retrieval-Augmented Generation (RAG) model, the app enables users to ask natural language questions about the dataset, such as property pricing, location, room types, and occupancy details. The app's goal is to offer an intuitive interface for querying the NYC rental market, providing valuable insights into pricing trends, neighborhood characteristics, and other key factors that influence rental properties in the city. By leveraging state-of-the-art NLP techniques like DistilBERT for data retrieval and GPT-2 for generating human-like answers, the app aims to demonstrate the power of combining information retrieval with natural language generation for real-world data analysis.
 
