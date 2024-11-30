@@ -41,6 +41,55 @@ The aim of this app is to provide an interactive platform that allows users to e
 **Powered by DistilBERT for text embedding and GPT-2 for generating responses, the app offers a smooth and responsive querying experience.**
 [^1]: [NY Rental Properties Pricing](https://www.kaggle.com/datasets/ivanchvez/ny-rental-properties-pricing)
 
+
+# Model
+The model combines machine learning techniques for embedding generation, similarity search, and natural language response generation.
+## 1. Dataset Preparation:
+- Loads a CSV file '*ny_rental_data.csv*' containing New York rental property data.
+- Selects and cleans relevant columns (latitude, longitude, neighbourhood, etc.) for further processing.
+  
+## 2. Embedding Generation:
+- Uses **DistilBERT**, a lightweight transformer model, to generate vector embeddings for text data (e.g., neighborhoods).
+- Converts the text embeddings into a numerical format for similarity searches.
+
+## 3. Similarity Search with FAISS:
+- Facebook AI Similarity Search) is a library developed by Facebook AI that specializes in efficient similarity search and clustering of dense vectors.
+- Utilizes FAISS, a library for fast similarity search, to index the embeddings.
+- Allows retrieval of the most relevant data points based on a user's query.
+- Uses L2 distance for similarity search, formula:
+  ![L2 Distance](https://github.com/user-attachments/assets/6fe9e48a-b739-4e38-9675-9440c3579d4f)
+
+
+## 4. Text Generation with GPT-2:
+- Uses GPT-2, a generative language model, to create human-like answers.
+- Takes a query and relevant context as input and generates a response.
+
+## 5. Key Functions:
+*get_embeddings*: Generates embeddings for a list of texts.
+*get_relevant_context*: Retrieves the most relevant contexts from the dataset based on similarity to the query.
+*generate_response*: Generates a natural language answer using the query and relevant context.
+*limit_response_length*: Ensures the generated response does not exceed a specified length.
+*answer_query*: Combines the above steps to retrieve context and generate a coherent answer.
+
+
+# Routes
+The *app.py* file sets up the web application using Flask. It defines the routes that handle requests and responses.
+## / Route:
+- Type: GET
+- Purpose: Serves the main page of the app by rendering index.html.
+- When the user accesses the root URL (/), the browser displays the user interface, which is defined in the index.html template.
+
+## /ask Route:
+- Type: POST
+- Purpose: Handles queries from the user and returns the generated answer.
+- The front-end sends a JSON object containing the user's query to this route.
+- The function extracts the query and passes it to the answer_query function in model.py.
+- The generated response is returned as a JSON object, which the front-end displays.
+
+# Additional Configurations:
+- **CORS:** Enabled to allow cross-origin requests, which is useful if the app needs to interact with other services or front-ends.
+- **GPU Configuration:** Disabled GPU usage to ensure compatibility on systems without CUDA.
+
 # Installation
 ## 1. Clone the repository:
 ```bash
