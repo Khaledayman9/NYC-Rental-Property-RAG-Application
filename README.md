@@ -38,7 +38,9 @@ The aim of this app is to provide an interactive platform that allows users to e
   - **RAG Model:** The app combines retrieval-based and generation-based methods, retrieving relevant data from the dataset, and then using a language model to generate coherent, contextually accurate answers.
   - **Data Insights:** The app allows users to gain insights into the NYC rental market, exploring the relationships between pricing, location, and occupancy.
   - **User Experience:** Interactive UI with word-by-word answer display, a loading spinner, and real-time answers.
+    
 **Powered by DistilBERT for text embedding and GPT-2 for generating responses, the app offers a smooth and responsive querying experience.**
+
 [^1]: [NY Rental Properties Pricing](https://www.kaggle.com/datasets/ivanchvez/ny-rental-properties-pricing)
 
 
@@ -57,6 +59,7 @@ The model combines machine learning techniques for embedding generation, similar
 - Utilizes FAISS, a library for fast similarity search, to index the embeddings.
 - Allows retrieval of the most relevant data points based on a user's query.
 - Uses L2 distance for similarity search, formula:
+  
   ![L2 Distance](https://github.com/user-attachments/assets/6fe9e48a-b739-4e38-9675-9440c3579d4f)
 
 
@@ -74,12 +77,12 @@ The model combines machine learning techniques for embedding generation, similar
 
 # Routes
 The *app.py* file sets up the web application using Flask. It defines the routes that handle requests and responses.
-## / Route:
+## /
 - Type: GET
 - Purpose: Serves the main page of the app by rendering index.html.
 - When the user accesses the root URL (/), the browser displays the user interface, which is defined in the index.html template.
 
-## /ask Route:
+## /ask
 - Type: POST
 - Purpose: Handles queries from the user and returns the generated answer.
 - The front-end sends a JSON object containing the user's query to this route.
